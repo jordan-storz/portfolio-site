@@ -1,0 +1,218 @@
+<html>
+  <head>
+    <title>Jordan Storz | Full Stack</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      h1 {
+        margin: 0;
+        font-size: 3rem;
+      }
+      body {
+        font-family: 'Montserrat', sans-serif;
+        background-image: url(cropped_sky.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        display: flex;
+        flex-wrap: wrap;
+        max-height: 100vh;
+        overflow: scroll;
+      }
+      
+      header {
+        display: flex;
+        height: 25rem;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: flex-start;
+        margin-bottom: 5rem;
+      }
+      main {
+/*        border: 1px solid red;*/
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+      }
+      div.business-card {
+        margin-top: 2rem;
+        margin-left: 2rem;
+        margin-right: 2.2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        background-color: rgba(183, 200, 217, 0.6);
+        width: 27rem;
+        height: 22rem;
+        padding: 3rem;
+        padding-top: 1rem;
+        border-radius: 10%;
+        box-shadow: 4px 5px 3px 1px black;
+      }
+      div.business-card h1 {
+        margin-bottom: 0.5rem;
+      }
+      div.icon-container {
+        display: flex;
+        align-content: left;
+        width: 65%;
+      }
+      div.business-card h2 {
+        margin-bottom: 4rem;
+        font-size: 2rem;
+      }
+      img.site-icon {
+        width: 4rem;
+        margin-right: 0.7rem;
+      }
+      img.site-icon:hover {
+        filter: grayscale(100%);
+      }
+      img.git-icon {
+        width: 3.3rem;
+        margin-top: 0.3rem;
+      }
+      nav {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        justify-content: center;
+        margin-top: 2rem;
+      }
+      nav button {
+        padding: 2rem;
+        border-radius: 50%;
+        border: 0;
+        box-shadow: 1px 1px 1px 1px;
+        height: 7rem;
+        width: 7rem;
+        font-size: 1.4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 0.6rem;
+        background-color: rgba(255, 87, 84, 0.7);
+        transition: background-color 1s;
+        -webkit-transition: background-color 0.3s;
+      }
+      nav button:hover {
+        cursor: pointer;
+        background-color: rgba(214, 248, 181, 0.5);
+      }
+      article.site-preview {
+/*        border: 3px solid black;*/
+        border-top: 2px solid black;
+        border-bottom: 2px solid black;
+        padding-bottom: 2rem;
+        text-align: center;
+        width: 100%;
+      }
+      article.site-preview h3 {
+        font-size: 2rem;
+        text-align: center;
+      }
+      article.site-preview ul {
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+      }
+      article.site-preview ul li {
+        margin-left: 0.4rem;
+        font-size: 0.9rem;
+      }
+      article.site-preview iframe {
+        margin-top: 1rem;
+      }
+      article.site-preview div.site-description {
+        background-color: rgba(0, 0, 0, 0.3);
+        color: white;
+        padding: 0.6rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="business-card">
+        <h1>Jordan Storz</h1>
+        <div class="icon-container">
+          <a href="www.linkedin.com/in/jordan-storz">
+          <img src="linkd-icon.png"  alt="linkd in icon" class="site-icon">
+        </a>
+        <a href="https://github.com/jordan-storz">
+          <img src="git-icon.png" alt="github icon" class="site-icon git-icon">
+        </a>
+        <a href="mailto:jordan.storz.1@gmail.com">
+        </a>
+        </div>
+        <h2>full stack developer</h2>
+       </div>
+       <nav>
+         <button>Portfolio</button>
+         <button>Tech</button>
+         <button>About</button>
+       </nav>
+    </header>
+    <main>
+      
+       <section class="j-component" id="portfolio">
+         <article class="site-preview">
+           <h3>Golie Visual</h3>
+           <div class="site-description">
+             <p class="site-description">
+             A living visualizer in your browser.  Available as a Chrome extension.
+           </p>
+           <ul>
+             <li>jQuery |</li>
+             <li>Node + Express</li>
+           </ul>
+           </div>
+           <iframe src="https://www.golie-visual.com" width="700" height="500">
+            <p>Your browser does not support iframes.</p>
+           </iframe>
+         </article>
+         <article class="site-preview">
+           <h3>Roomify</h3>
+           <div class="site-description">
+             <p>
+             A Chrome extension that adds a message board and video chat to every web page.
+           </p>
+           <ul>
+             <li>Angular |</li>
+             <li>Node + Express |</li>
+             <li>Websockets |</li>
+             <li>Postgres</li>
+           </ul>
+           </div>
+           <iframe src="https://roomify-f4882.firebaseapp.com" width="700" height="500">
+            <p>Your browser does not support iframes.</p>
+           </iframe>
+         </article>
+       </section>
+       <section class="j-component" id="technoledgy">
+         
+       </section>
+       <section class="j-component" id="about">
+         
+       </section>
+    </main>
+    <footer></footer>
+    <script>
+      class jComponent {
+        constructor(elementId) {
+          this.$el = $(elementId);
+        },
+        
+        setCss(prop, val) {
+          this.$el.css(prop, val);
+        },
+          
+        
+      }
+    
+    </script>
+  </body>
+</html>
