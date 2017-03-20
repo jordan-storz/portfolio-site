@@ -19,9 +19,9 @@
         display: flex;
         flex-wrap: wrap;
         max-height: 100vh;
-        overflow: scroll;
+/*        overflow: scroll;*/
       }
-      
+
       header {
         display: flex;
         height: 25rem;
@@ -29,13 +29,15 @@
         align-content: center;
         justify-content: flex-start;
         margin-bottom: 5rem;
+        position: fixed;
       }
       main {
 /*        border: 1px solid red;*/
         flex-grow: 1;
         display: flex;
-        align-items: center;
+        align-items: flex-end;
         flex-direction: column;
+        padding-right: 2rem;
       }
       div.business-card {
         margin-top: 2rem;
@@ -132,6 +134,26 @@
         color: white;
         padding: 0.6rem;
       }
+      article.site-preview img {
+        margin-top: 1rem;
+        width: 700px;
+        height: 400px;
+      }
+      article.site-preview a {
+        text-decoration: none;
+        color: inherit;
+        background-color: rgb(30, 71, 136);
+        padding: 0.2rem 0.5rem;
+        border: 2px solid white;
+        border-radius: 4px;
+      }
+      article.site-preview a:hover {
+        background-color: rgb(195, 244, 181);
+        color: black;
+      }
+      article.site-preview img.dashbored-image {
+        height: 500px;
+      }
     </style>
   </head>
   <body>
@@ -151,14 +173,30 @@
         <h2>full stack developer</h2>
        </div>
        <nav>
-         <button>Portfolio</button>
-         <button>Tech</button>
-         <button>About</button>
+         <button id="portfolio-btn">Portfolio</button>
+         <button id="tech-btn">Tech</button>
+         <button id="about-btn">About</button>
        </nav>
     </header>
     <main>
-      
+
        <section class="j-component" id="portfolio">
+        <article class="site-preview">
+           <h3>Library of Devexandria</h3>
+           <div class="site-description">
+             <p class="site-description">
+             A social bookmarking site exclusively for programmers.
+           </p>
+           <ul>
+             <li>Ember |</li>
+             <li>Ruby on Rails |</li>
+             <li>Node + Express |</li>
+             <li>Haskell</li>
+           </ul>
+             <a href="https://www.library-of-devexandria.com">Go to site</a>
+           </div>
+           <img src="lib-dev.png" alt="preview of library of devexandria web application">
+         </article>
          <article class="site-preview">
            <h3>Golie Visual</h3>
            <div class="site-description">
@@ -169,6 +207,7 @@
              <li>jQuery |</li>
              <li>Node + Express</li>
            </ul>
+           <a href="https://www.golie-visual.com">Go to site</a>
            </div>
            <iframe src="https://www.golie-visual.com" width="700" height="500">
             <p>Your browser does not support iframes.</p>
@@ -186,33 +225,112 @@
              <li>Websockets |</li>
              <li>Postgres</li>
            </ul>
+           <a href="https://roomify-f4882.firebaseapp.com/">Go to site</a>
            </div>
-           <iframe src="https://roomify-f4882.firebaseapp.com" width="700" height="500">
-            <p>Your browser does not support iframes.</p>
-           </iframe>
+           <img src="roomify.png" alt="Roomify application image.">
+         </article>
+
+         <article class="site-preview">
+           <h3>Dashbored</h3>
+           <div class="site-description">
+             <p>
+             Browse it up with this site for checking news, sports, and local events.
+             </p>
+           <ul>
+             <li>Node + Express |</li>
+             <li>Postgres</li>
+           </ul>
+           <a href="https://q2dashbored.herokuapp.com/">Go to site</a>
+           </div>
+          <img class="dashbored-image" src="dashbored.png" alt="Dashbored logo">
          </article>
        </section>
+
        <section class="j-component" id="technoledgy">
-         
+         <ul>
+           <li>JavaScript</li>
+           <li>Ruby on Rails</li>
+         </ul>
        </section>
        <section class="j-component" id="about">
-         
+
        </section>
     </main>
     <footer></footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/5.0.1/Rx.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.23.0/ramda.min.js"></script>
     <script>
-      class jComponent {
-        constructor(elementId) {
-          this.$el = $(elementId);
-        },
-        
-        setCss(prop, val) {
+
+      function JComponent(name, stateStream) {
+
+        this.$el = $(`#${name}`);
+        this.name = name;
+        stateStream.subscribe(state => {
+          console.log('got event');
+          console.log(state)
+          if (state.showing === this.name) {
+            console.log('matches me');
+            console.log(this.name);
+            this.show();
+          } else {
+            this.hide();
+          }
+        });
+
+
+        this.setCss = function(prop, val) {
           this.$el.css(prop, val);
-        },
-          
-        
+        }
+
+        this.hide = function() {
+          this.$el.fadeOut(200);
+        }
+
+        this.show = function() {
+          this.$el.fadeIn(300);
+        }
       }
-    
+
+      function Program () {
+        const self = this;
+        state = {
+          showing: 'portfolio'
+        }
+        state_ = new Rx.Subject();
+        this.elements = {
+          portfolio: new JComponent('portfolio', state_),
+          tech: new JComponent('tech', state_),
+          about: new JComponent('about', state_)
+        }
+        emitState();
+
+       this.setState = function(name, val) {
+         state[name] = val;
+         emitState();
+       }
+
+       function emitState() {
+         this.state_.next(state);
+       }
+
+       const buttonEvents =
+         ['portfolio', 'tech', 'about']
+           .forEach(featureName => {
+             console.log('each iteration')
+             return $(`#${featureName}-btn`).click(function() {
+               console.log('arranging event');
+               self.setState('showing', featureName);
+             });
+           });
+
+    }
+
+      const app = new Program();
+
+
+
+
     </script>
   </body>
 </html>
