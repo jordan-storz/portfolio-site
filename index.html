@@ -60,7 +60,7 @@
       }
       div.icon-container {
         display: flex;
-        align-content: left;
+        justify-content: left;
         width: 65%;
       }
       div.business-card h2 {
@@ -154,6 +154,44 @@
       article.site-preview img.dashbored-image {
         height: 500px;
       }
+      ul.tech-list {
+        border-radius: 2px;
+        box-shadow: 1px 1px 1px 1px #020202;
+        list-style-type: none;
+        background-color: rgba(172, 216, 231, 0.7);
+        padding-top: 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      ul.tech-list li {
+        display: flex;
+        height: 10rem;
+        /*background: pink;*/
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        margin-right: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      ul.tech-list li h3 {
+        margin: 0;
+      }
+
+      ul.tech-list img.tech-icon {
+        width: 8rem;
+        max-height: 8rem;
+      }
+      section#tech {
+        display: flex;
+        flex-wrap: wrap;
+        /*background-color: pink;*/
+        width: 50%;
+        padding: 3rem;
+        margin-right: 3rem;
+      }
       @media (max-width: 1388px) {
         header {
           flex-direction: row;
@@ -163,29 +201,53 @@
           flex-direction: row;
         }
       }
-
-      @media (max-width: 1230px) {
+      @media (max-width: 1233px) {
         main {
-          margin-top: 42rem;
+          margin-top: 11rem;
+          justify-content: center;
+          align-items: center;
         }
         header {
-          height: 22rem;
-          width: 100%;
-          background-color: rgba(255, 255, 255, 0.5);
+          height: 11rem;
+          position: static;
         }
-        nav {
-          background-color: rgba(255, 255, 255, 0.5);
+        header nav button {
+          margin-right: 2rem;
         }
         div.business-card {
-          height: 15rem;
-          background-color: #efefef;
+          height: 11rem;
         }
         div.business-card h1 {
           font-size: 2rem;
         }
         div.business-card h2 {
-          font-size: 2rem;
-          margin-top: 5rem;
+          display: none;
+        }
+        div.business-card img {
+          height: auto;
+          width: 3rem;
+          margin-right: 2rem;
+        }
+        div.icon-container {
+          justify-content: center;
+        }
+        section#tech {
+          width: 100% !important;
+          margin-top: -6rem;
+          padding-right: 0;
+        }
+      }
+      img#node-icon {
+        filter: invert(100%);
+      }
+      @media (max-width: 900px) {
+        img.tech-icon {
+          width: 6rem !important;
+        }
+      }
+      @media (max-width: 600px) {
+        img.tech-icon {
+          width: 4rem !important;
         }
       }
     </style>
@@ -195,13 +257,14 @@
       <div class="business-card">
         <h1>Jordan Storz</h1>
         <div class="icon-container">
-          <a href="www.linkedin.com/in/jordan-storz">
+          <a href="https://www.linkedin.com/in/jordan-storz" target="_blank">
           <img src="linkd-icon.png"  alt="linkd in icon" class="site-icon">
         </a>
-        <a href="https://github.com/jordan-storz">
+        <a href="https://github.com/jordan-storz" target="_blank">
           <img src="git-icon.png" alt="github icon" class="site-icon git-icon">
         </a>
-        <a href="mailto:jordan.storz.1@gmail.com">
+        <a href="mailto:jordan.storz.1@gmail.com" target="_blank">
+          <img src="email-icon.png" alt="email icon" class="site-icon">
         </a>
         </div>
         <h2>full stack developer</h2>
@@ -213,7 +276,6 @@
        </nav>
     </header>
     <main>
-
        <section class="j-component" id="portfolio">
         <article class="site-preview">
            <h3>Library of Devexandria</h3>
@@ -227,7 +289,7 @@
              <li>Node + Express |</li>
              <li>Haskell</li>
            </ul>
-             <a href="https://www.library-of-devexandria.com">Go to site</a>
+             <a href="https://library-of-devexandria.com">Go to site</a>
            </div>
            <img src="lib-dev.png" alt="preview of library of devexandria web application">
          </article>
@@ -280,12 +342,47 @@
          </article>
        </section>
 
-       <section class="j-component" id="technoledgy">
-         <ul>
-           <li>JavaScript</li>
-           <li>Ruby on Rails</li>
+       <section class="j-component" id="tech">
+         <ul class="tech-list">
+           <li>
+             <img src="tech-javascript.png" alt="javascript icon" class="tech-icon">
+             <h3>JavaScript</h3>
+           </li>
+           <li>
+             <img src="tech-elm.png" alt="javascript icon" class="tech-icon">
+             <h3>Elm</h3>
+           </li>
+           <li>
+             <img src="tech-ruby.png" alt="javascript icon" class="tech-icon">
+             <h3>Ruby</h3>
+           </li>
+           <li>
+             <img src="tech-html.png" alt="javascript icon" class="tech-icon">
+             <h3>HTML</h3>
+           </li>
+           <li>
+             <img src="tech-css.png" alt="javascript icon" class="tech-icon">
+             <h3>CSS</h3>
+           </li>
+           <li>
+             <img src="tech-node.png" alt="javascript icon" class="tech-icon" id="node-icon">
+             <h3>Node</h3>
+           </li>
+           <li>
+             <img src="tech-angular.png" alt="javascript icon" class="tech-icon">
+             <h3>Angular</h3>
+           </li>
+           <li>
+             <img src="tech-ember.png" alt="javascript icon" class="tech-icon">
+             <h3>Ember</h3>
+           </li>
+           <li>
+             <img src="tech-rails.png" alt="javascript icon" class="tech-icon">
+             <h3>Rails</h3>
+           </li>
          </ul>
        </section>
+
        <section class="j-component" id="about">
 
        </section>
@@ -299,15 +396,14 @@
       function JComponent(name, stateStream) {
 
         this.$el = $(`#${name}`);
+        this.$button = $(`#${name}-btn`)
         this.name = name;
         stateStream.subscribe(state => {
-          console.log('got event');
-          console.log(state)
           if (state.showing === this.name) {
-            console.log('matches me');
-            console.log(this.name);
+            this.hightlightButton();
             this.show();
           } else {
+            this.regularButton();
             this.hide();
           }
         });
@@ -324,20 +420,22 @@
         this.show = function() {
           this.$el.fadeIn(300);
         }
+
+        this.hightlightButton = function() {
+          this.$button.css('background-color', 'rgba(214, 248, 181, 0.5)');
+        }
+
+        this.regularButton = function() {
+          this.$button.css('background-color', 'rgba(255, 87, 84, 0.7)');
+        }
       }
+
+
 
       function Program () {
         const self = this;
-        state = {
-          showing: 'portfolio'
-        }
-        state_ = new Rx.Subject();
-        this.elements = {
-          portfolio: new JComponent('portfolio', state_),
-          tech: new JComponent('tech', state_),
-          about: new JComponent('about', state_)
-        }
-        emitState();
+        var state = {};
+        var state_ = new Rx.Subject();
 
        this.setState = function(name, val) {
          state[name] = val;
@@ -345,7 +443,11 @@
        }
 
        function emitState() {
-         this.state_.next(state);
+         state_.next(state);
+       }
+
+       this.setRoute = function(name) {
+         window.history.pushState({}, '', name);
        }
 
        const buttonEvents =
@@ -354,11 +456,29 @@
              console.log('each iteration')
              return $(`#${featureName}-btn`).click(function() {
                console.log('arranging event');
+               self.setRoute(featureName);
                self.setState('showing', featureName);
              });
            });
 
-    }
+       const init = (function (context) {
+         let route = window.location.pathname.replace('/', '');
+         console.log('ROUTE')
+         console.log(route)
+         if (!route) {
+           context.setRoute('portfolio');
+           context.setState('showing', 'portfolio');
+         } else {
+           context.setState('showing', route);
+         }
+         this.elements = {
+           portfolio: new JComponent('portfolio', state_),
+           tech: new JComponent('tech', state_),
+           about: new JComponent('about', state_)
+         }
+         emitState();
+       })(this);
+      }
 
       const app = new Program();
 
